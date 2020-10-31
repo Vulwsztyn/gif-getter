@@ -1,5 +1,5 @@
 const express = require('express')
-
+require('dotenv').config()
 const Server = require('./server')
 const PixabayService = require('./pixabayService')
 const GiphyService = require('./giphyService')
