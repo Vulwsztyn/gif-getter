@@ -1,5 +1,5 @@
 class Server {
-  constructor(app) {
+  constructor(app, giphyService, pixabayService) {
     this.app = app
     this.giphyService = giphyService
     this.pixabayService = pixabayService
@@ -8,9 +8,8 @@ class Server {
     })
     this.app.get('/api/query/:q', async (req, res) => {
       const { q } = req.params
-      const giphyResponse = await giphyService.get(q)
-      const pixabayResponse = await pixabayService.get(q)
-      console.log(giphyResponse)
+      const giphyResponse = await this.giphyService.get(q)
+      const pixabayResponse = await this.pixabayService.get(q)
       res.send({ images: [...giphyResponse, ...pixabayResponse] })
     })
   }
