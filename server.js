@@ -1,8 +1,16 @@
+const express = require('express')
+const path = require('path')
+
+const buildDirectory = '/frontend/build'
 class Server {
   constructor(app, giphyService, pixabayService) {
     this.app = app
     this.giphyService = giphyService
     this.pixabayService = pixabayService
+    app.use(express.static(path.join(__dirname, buildDirectory)))
+    app.get('/', (req, res) => {
+      res.sendFile(path.join(__dirname + `${buildDirectory}/index.html`))
+    })
     this.app.get('/api/hello', (req, res) => {
       res.send('Hello World!')
     })
