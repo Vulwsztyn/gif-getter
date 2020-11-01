@@ -8,7 +8,7 @@ class PixabayService {
     const response = () =>
       axios
         .get('https://pixabay.com/api/', {
-          params: { ke2y: process.env.PIXABAY_API_KEY, q },
+          params: { key: process.env.PIXABAY_API_KEY, q },
         })
         .then((e) => Either.of(e))
         .catch((_) => left([]))
