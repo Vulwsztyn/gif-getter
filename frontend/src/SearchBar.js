@@ -17,7 +17,7 @@ function SearchBar({ changeImages }) {
   const classes = useStyles()
 
   const fetchImages = async (q) => {
-    const response = await axios.get(`http://localhost:5000/api/query/${q}`)
+    const response = await axios.get(`/api/query/${q}`)
     changeImages(R.pathOr([], ['data', 'images'], response))
   }
 
